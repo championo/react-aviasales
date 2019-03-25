@@ -81,7 +81,7 @@ export const getLongDate = (dateString) => {
 
 
 /**
- * Пересчитывает стоимость
+ * Пересчитывает стоимость билета на основе списка курсов валют и текущей валюты
  */
 export const calcPrice = (currencies, currentCurrency) => {
 

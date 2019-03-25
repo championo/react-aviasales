@@ -134,8 +134,8 @@ date_* - строка, содержащая дату в длинном форм�
 
 Code: [/src/components/views/one/Edit.js](https://github.com/evoluteur/evolutility-ui-react/blob/master/src/components/views/one/Edit.js)
 
-### List
-Gives a tabular view of a collection.
+### BuyBotton, Ticket
+Получают цену в виде строки с валютой. Нет смысла проверять на ноль. Там не 0 в цене!!!!!!!!!!! Обратить внимание на функцию обработчик покупки билета
 
 ![List](https://raw.githubusercontent.com/evoluteur/evolutility-ui-react/master/public/screenshots/comics/many-list.gif)
 
