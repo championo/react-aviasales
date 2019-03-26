@@ -159,6 +159,60 @@ Code: [/src/components/views/many/Cards.js](https://github.com/evoluteur/evoluti
 Хранилище данных состоит из:
 - tickets - исходная коллекция билетов
 
+## Тестирование
+В качестве фреймворка для модульного тестирования в приложении используется [Jest](https://jestjs.io/) от Facebook.
+
+### Как установить
+
+Необходимо, чтобы были установлены следующие модули: 
+
+```bash
+npm install --save-dev jest
+npm install --save-dev babel-jest
+npm install --save-dev @babel/preset-env
+npm install --save-dev @babel/preset-react
+npm install --save-dev react-test-renderer
+# Или установить все одной командой
+npm i --save-dev jest babel-jest @babel/preset-env @babel/preset-react react-test-renderer
+```
+На момент активной работы над проектом были следующие модули и их версии:
+
+```bash
+# package.json
+"devDependencies": {
+    "@babel/preset-env": "^7.4.2",
+    "@babel/preset-react": "^7.0.0",
+    "babel-jest": "^24.5.0",
+    "jest": "^24.5.0",
+    "react-test-renderer": "^16.8.5"
+  }
+```
+
+Также необходимо создать файл babel.config.js со следующим содержанием:
+```bash
+module.exports = {
+  presets: ['@babel/preset-env', '@babel/preset-react'],
+};
+```
+
+### Как запустить
+
+Для запуска тестов выполните команду npm test. 
+
+По умолчанию команда test ссылается на скрипт в файле /scripts/test.js и можно увидеть в package.json такую строку:
+```bash
+"scripts": {
+    "test": "node scripts/test.js"
+  },
+```
+Изменим её для того, чтобы отображались результаты каждого теста в каждом файле, а не общей сводкой:
+```bash
+"scripts": {
+    "test": "node scripts/test.js --env=jsdom --verbose"
+  },
+```
+По сути вызываем скрипт с параметрами.
+
 ## Для связи
 Буду рад слышать от вас замечания и рекомендации по проекту. Для связи со мной используйте telegram [https://t.me/championo](https://t.me/championo)
 

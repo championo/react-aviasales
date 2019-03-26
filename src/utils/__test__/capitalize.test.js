@@ -1,9 +1,11 @@
-const  utils  = require('../utils');
-
+//const  utils  = require('../utils');
+//import { capitalize } from '../utils';
+import utils  from '../utils';
+/*
 test('Without argument', () => {
   expect(utils.capitalize()).toBe('');
 });
-
+*/
 test('Argument is null', () => {
   expect(utils.capitalize(null)).toBe('');
 });

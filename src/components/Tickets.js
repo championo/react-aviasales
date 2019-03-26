@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 
 import Ticket from './Ticket';
 import { formatCurrency, calcPrice } from '../utils/utils';
-import { type } from 'os';
 
 /**
  * Выводит список билетов
