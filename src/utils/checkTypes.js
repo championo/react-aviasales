@@ -1,5 +1,5 @@
-const isIntNumber = number => {
-  return Number.isInteger(number);
+export const isInteger = number => {
+  return typeof value === 'number' && Number.isFinite(number) && !(number % 1);
 }
 
 /**
@@ -7,7 +7,7 @@ const isIntNumber = number => {
  * @param {string} inputString Строка
  * @returns {boolean} Если тип не строка - возвращается false
  */
-const isString = inputString => {
+export const isString = inputString => {
 
   if (typeof inputString === 'string')
     return true;
@@ -20,13 +20,10 @@ const isString = inputString => {
  * @param {string} inputString Строка
  * @returns {boolean} Если строка пустая или это не строка - возвращается true
  */
-const isEmptyString = inputString => {
+export const isEmptyString = inputString => {
 
   if (!isString(inputString) || !inputString.length)
     return true;
 
   return false;
 }
-
-
-export { isString, isEmptyString, isIntNumber };

@@ -1,68 +1,50 @@
-import { isIntNumber } from './checkTypes';
-
-
+//import { isInteger } from './checkTypes';
+import { isShortDateFormat } from './checkFormats';
 
 /**
- * Возвращает строку с начальной буквой в верхнем регистре (например, 'строка' будет преобразована в 'Строка').
- * @param {string} text Строка.
+ * Возвращает новую строку с начальной буквой в верхнем регистре (например, 'строка' будет преобразована в 'Строка').
+ * @param {string} inputString Строка с текстом.
  * @returns {string} Строка, начинающаяся с буквы в верхнем регистре. В случае ошибки преобразования будет возвращена пустая строка.
- 
-export function capitalize (text) {
-
-  if (typeof text !== 'string') {
-    return '';
-  }
-  return text.charAt(0).toUpperCase() + text.slice(1);
-}
-*/
-export default {
-
-  capitalize: (text) => {
-
-    if (typeof text !== 'string') {
-      return '';
-    }
-    return text.charAt(0).toUpperCase() + text.slice(1);
-  },
-/**
- * Возвращает true, если строка в формате 'dd.mm.yy'. В противном случае - false.
- * @param {string} dateString - Строка, содержащая дату, в формате 'dd.mm.yy'.
- * @returns {boolean} Возвращает true, если строка в формате 'dd.mm.yy'. В иных случаях - false.
+ * @version 1.0.0
  */
-isDateFormat: dateString => {
-  const regExp = new RegExp('^[0-9]{2}\\.[0-9]{2}\\.[0-9]{2}$');
-  return regExp.test(dateString);
-},
+export const capitalize = inputString => {
+
+  if (typeof inputString !== 'string')
+    return '';
+  
+  return inputString.charAt(0).toUpperCase() + inputString.slice(1);
+}
 
 /**
  * Возвращает объект Date, созданный на основе строки.
  * @param {string} dateString Строка, содержащая дату в формате 'dd.mm.yy'.
- * @returns {Date} Объект Date. В случае ошибки конвертации будет возвращена строка 'Invalid Date'.
+ * @returns {Date} Объект Date. В случае ошибки конвертации будет возвращен объект типа Date 'Invalid Date'.
+ * @version 1.0.0
  */
-convertToDate: dateString => {
+export const convertToDate = dateString => {
 
-  if(!isDateFormat(dateString)) // Если не подходит формат даты, возвращаем 'Invalid Date'
+  if(!isShortDateFormat(dateString)) // Если не подходит формат даты, возвращаем 'Invalid Date'
     return new Date(undefined);
 
-  const [day, month, year] = dateString.split('.'); 
-  return new Date(year, month - 1, day); 
-},
-
+  const [day, month, year] = dateString.split('.');
+  return new Date(year, month - 1, day);
+}
 
 /**
- * Возвращает название месяца по его порядковому номеру.
+ * Возвращает сокращенное название месяца по его порядковому номеру.
  * @param {number} monthNumber Номер месяца (от 0 до 11).
- * @returns {string} Строка, содержащая сокращенное имя месяца. В случае ошибки получения значения будет возвращена строка со значением 'Некорректный месяц'.
+ * @returns {string} Строка, содержащая сокращенное имя месяца. В случае ошибки получения значения будет возвращена строка со значением 'Invalid month'.
+ * @version 1.0.0
  */
-getMonthName: monthNumber => {
+export const getMonthName = monthNumber => {
 
-  if ((typeof monthNumber !== 'number') || monthNumber < 0 || monthNumber > 11)
-    return 'Некорректный месяц';
+ if (!Number.isInteger(monthNumber) || monthNumber < 0 || monthNumber > 11)
+    return 'Invalid month';
 
   const names = ['янв', 'фев', 'мар', 'апр', 'мая', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'];
 
   return names[monthNumber];
-},
+}
 
 /**
  * Возвращает строку, содержащую дату, в формате '12 окт 2018, Сб'.
@@ -70,7 +52,7 @@ getMonthName: monthNumber => {
  * @returns {string} Строка, содержащая отформатированную дату. В случае ошибки получения значения будет возвращена пустая строка или со значением 'Некорректная дата'.
  * @version 1.0.0
  */
-getLongDate: (dateString) => {
+export const getLongDate = (dateString) => {
 
   if (typeof dateString !== 'string')
     return '';
@@ -79,7 +61,7 @@ getLongDate: (dateString) => {
 
   // Если значение не имеет тип Date или оно некорректное
   if((Object.prototype.toString.call(date) !== '[object Date]') || date.toString() === 'Invalid Date') 
-    return 'Некорректная дата';
+    return 'Invalid Date';
 
   let d = date.getDate();
   // Как вариант использовать это, но есть проблема, где возвращается слово "май"
@@ -89,13 +71,13 @@ getLongDate: (dateString) => {
   let dw = capitalize(date.toLocaleString('ru', {weekday: 'short'}));
 
   return `${d} ${m} ${y}, ${dw}`;
-},
-
+}
 
 /**
  * Пересчитывает стоимость билета на основе списка курсов валют и текущей валюты
+ * @version 1.0.0
  */
-calcPrice: (currencies, currentCurrency) => {
+export const calcPrice = (currencies, currentCurrency) => {
 
   let findedCurrency;
 
@@ -105,24 +87,24 @@ calcPrice: (currencies, currentCurrency) => {
   
   return function(price) {
     if (typeof price !== 'number' || price < 0)
-      return 'Некорректная цена';
+      return 'Invalid price';
 
       if (findedCurrency !== undefined)
         return price / findedCurrency.Value;
       else return price;
   }
-},
-
+}
 
 /**
  * Возвращает форматированную цену в зависимости от валюты.
  * @param {number} price Цена.
  * @returns {string} Строка, содержащая отформатированную цену. В случае ошибки получения значения будет возвращена строка со значением 'Некорректная цена'.
+ * @version 1.0.0
  */
-formatCurrency: currencyCode => {
+export const formatCurrency = currencyCode => {
 
   if (typeof currencyCode !== 'string' || (currencyCode.length < 1 && currencyCode.length > 3))
-    return 'Некорректная валюта';
+    return 'Invalid currency';
 
   return function(price) {
     let options = { style: 'currency', currency: currencyCode.trim().toUpperCase(), minimumFractionDigits: 0 }; 
@@ -132,20 +114,25 @@ formatCurrency: currencyCode => {
 
     return new Intl.NumberFormat('ru-RU', options).format(price);
   }
-},
+}
 
-generateString:  () => {
+/**
+ * 
+ * @version 1.0.0
+ */
+export const generateString = () => {
   return Math.random().toString(16).substr(2, 7);
-},
+}
 
 /**
  * @description Возвращает склоненное существительное
  * @param {number} number Число, к которому нужно склонить существительное
  * @param {array} titles Массив склоненных слов, например ['яблолко', 'яблока', 'яблок']
+ * @version 1.0.0
  */
-getDeclension: number => {
+export const getDeclension = number => {
   
-  if (!isIntNumber(number))
+  if (!Number.isInteger(number))
     return 'Нет данных';
 
   /* Сначала идут правила исключения: 0 - возвращаем Без пересадок; 11, 12, 13, 14 - пересадок */
@@ -182,17 +169,27 @@ getDeclension: number => {
     default:
       break;
   }
-},
+}
 
-getLastChar: text => {
+/**
+ * 
+ * @param {*} text 
+ * @version 1.0.0
+ */
+export const getLastChar = text => {
   return text.toString().charAt(text.length-1);
-},
+}
 
-getTwoLastDigit: number => {
+/**
+ * 
+ * @param {*} number
+ * @version 1.0.0
+ */
+export const getTwoLastDigit = number => {
   const pattern = /[0-9]{1,2}$/;
   return number.toString().match(pattern);
 }
-};
+
 /*
 export const getCourses = () => {
   fetch('https://www.cbr-xml-daily.ru/daily_json.js')
@@ -208,18 +205,3 @@ export const getCourses = () => {
   });
 }
 */
-/*
-export const convertTo = (currency, price) => {
-  return (price / currency);
-}
-*/
-/*
-export const formatCurrency = (price) => {
-
-  if (typeof price !== 'number' || price < 0)
-    return 'Некорректная цена';
-
-  // Форматируем цену в формате '12 400,34 ₽'
-  let options = { style: 'currency', currency: 'RUB', minimumFractionDigits: 0 }; 
-  return new Intl.NumberFormat('ru-RU', options).format(price);
-} */

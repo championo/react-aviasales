@@ -171,6 +171,7 @@ npm install --save-dev jest
 npm install --save-dev babel-jest
 npm install --save-dev @babel/preset-env
 npm install --save-dev @babel/preset-react
+# Пакет для рендеринга снимков
 npm install --save-dev react-test-renderer
 # Или установить все одной командой
 npm i --save-dev jest babel-jest @babel/preset-env @babel/preset-react react-test-renderer
