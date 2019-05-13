@@ -7,12 +7,12 @@ import GroupBox from './Controls/GroupBox/index';
 import CheckGroup from './Controls/Check/CheckGroup';
 import RadioGroup from './Controls/Radio/RadioGroup';
 
-import { setCurrency, setStops, setOnlyStops } from '../redux/actions/actions';
+import { setCurrency, setStops, setOnlyStop } from '../redux/actions';
 
 const SearchBar = (props) => {
 
    // Кнопки переключения валют
-   const currencies =  [
+   const currencies = [
     { 
       text: "Rub",
       value: "rub",
@@ -34,7 +34,7 @@ const SearchBar = (props) => {
   ];
 
   // Кнопки выбора пересадок
-  const stops =  [
+  const stops = [
     { 
       text: "Все", 
       value: -1, 
@@ -79,19 +79,11 @@ const SearchBar = (props) => {
     );
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    changeCurrency: currency => {
-      dispatch(setCurrency(currency));
-    },
-    changeStops: stops => {
-      dispatch(setStops(stops));
-    },
-    changeOnlyStops: stops => {
-      dispatch(setOnlyStops(stops));
-    }
-  }
-};
+const mapDispatchToProps = dispatch => ({
+  changeCurrency: currency => dispatch(setCurrency(currency)),
+  changeStops: stops => dispatch(setStops(stops)),
+  changeOnlyStops: stops => dispatch(setOnlyStop(stops))
+});
 
 export default connect(null, mapDispatchToProps)(SearchBar);
 

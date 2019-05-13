@@ -21,7 +21,7 @@ const CheckGroup = ({items, onCheckBoxClick, onOnlyTextClick}) => {
                 checked={item.checked} 
                 disabled={item.disabled} 
                 click={onCheckBoxClick}/>
-      { (item.hasOwnProperty('hasStopsOnly') && item.hasStopsOnly) && <FloatingText onClick={() =>onOnlyTextClick(item.value)}>Только</FloatingText> }
+      { (item.hasOwnProperty('hasStopsOnly') && item.hasStopsOnly) && <FloatingText onClick={() => onOnlyTextClick(item.value)}>Только</FloatingText> }
     </Container>
   );
 

@@ -1,6 +1,6 @@
 import { capitalize } from '../utils';
 
-describe('Capitalize', () => {
+describe('capitalize function', () => {
 
   test('Аргумент c типом не string. Вернет пустую строку', () => {
     expect(capitalize()).toBe('');

@@ -60,15 +60,16 @@ export const getLongDate = (dateString) => {
   let date = convertToDate(dateString);
 
   // Если значение не имеет тип Date или оно некорректное
-  if((Object.prototype.toString.call(date) !== '[object Date]') || date.toString() === 'Invalid Date') 
+  if((Object.prototype.toString.call(date) !== '[object Date]') || date.toString() === 'Invalid Date')
     return 'Invalid Date';
 
+  // Получаем из даты значения дня (d), месяца (m), года (y), дня недели (dw)
   let d = date.getDate();
   // Как вариант использовать это, но есть проблема, где возвращается слово "май"
   // let m = date.toLocaleString('ru-RU', {month: 'long'}).slice(0,3); февраль --> фев
   let m = getMonthName(date.getMonth());
   let y = "20" + date.getFullYear().toString().substr(2,2);
-  let dw = capitalize(date.toLocaleString('ru', {weekday: 'short'}));
+  let dw = capitalize(date.toLocaleString('ru-RU', {weekday: 'short'}));
 
   return `${d} ${m} ${y}, ${dw}`;
 }
@@ -81,8 +82,8 @@ export const calcPrice = (currencies, currentCurrency) => {
 
   let findedCurrency;
 
-  if (currencies !== null)
-    findedCurrency = currencies.courses.find(x => x.CharCode === currentCurrency.trim().toUpperCase());
+  if (currencies)
+    findedCurrency = currencies.find(x => x.CharCode === currentCurrency.trim().toUpperCase());
 
   
   return function(price) {
@@ -91,7 +92,8 @@ export const calcPrice = (currencies, currentCurrency) => {
 
       if (findedCurrency !== undefined)
         return price / findedCurrency.Value;
-      else return price;
+      
+      return price;
   }
 }
 
@@ -103,7 +105,10 @@ export const calcPrice = (currencies, currentCurrency) => {
  */
 export const formatCurrency = currencyCode => {
 
-  if (typeof currencyCode !== 'string' || (currencyCode.length < 1 && currencyCode.length > 3))
+  if (typeof currencyCode !== 'string' || !currencyCode.trim().length)
+    return 'Invalid currency';
+
+  if (currencyCode.length < 1 && currencyCode.length > 3)
     return 'Invalid currency';
 
   return function(price) {
@@ -132,6 +137,7 @@ export const generateString = () => {
  */
 export const getDeclension = number => {
   
+
   if (!Number.isInteger(number))
     return 'Нет данных';
 
@@ -151,7 +157,7 @@ export const getDeclension = number => {
   цифра оканчивающаяся на 5-9 (5, 8, 19, 25, 27, 36, 39, 45, 167) вернет слово 'пересадок'.
   */
   switch(number) {
-    //switch(getLastChar(number)) {
+  //switch(getLastChar(number.toString())) {
     case 0:
       return `${number} пересадок`;
     case 1:
@@ -172,22 +178,40 @@ export const getDeclension = number => {
 }
 
 /**
- * 
- * @param {*} text 
+ * Возвращает последний символ строки.
+ * @param {string} Строка.
+ * @returns {string} Строка, состоящая из одного символа. В случае ошибки получения последнего символа будет возвращена пустая строка.
  * @version 1.0.0
  */
-export const getLastChar = text => {
-  return text.toString().charAt(text.length-1);
+export const getLastChar = inputString => {
+
+  if (typeof inputString !== 'string' || !inputString.trim().length)
+    return '';
+
+  // Используем новую переменную для корректного подсчета длины строки без пробелов и взятия последнего символа
+  const trimmedText = inputString.trim();
+
+  return trimmedText.charAt(trimmedText.length - 1);
 }
 
 /**
- * 
- * @param {*} number
+ * Возвращает последние две цифры числа.
+ * @param {number} Число
+ * @returns {number} Число, состоящее из одного или двух знаков. В случае ошибки получения значения будет возвращено значение null.
  * @version 1.0.0
  */
 export const getTwoLastDigit = number => {
+
+  if (!Number.isFinite(number))
+    return null;
+
   const pattern = /[0-9]{1,2}$/;
-  return number.toString().match(pattern);
+  let results =  number.toString().match(pattern); // Ищет совпадения по шаблону и возвращает его в виде массива строк
+
+  if (results !== null)
+    return Number(results[0]);
+   
+  return null;
 }
 
 /*

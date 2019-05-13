@@ -12,7 +12,7 @@ const Ticket = props => {
     <Container>
       <Actions>
         <TicketLogo />
-        <BuyButton price={props.price} buyClick={() => {alert('Я Заглушка. Повеселил? :)')}} />
+        <BuyButton price={props.price} buyClick={() => {alert('Я заглушка. Повеселил? :)')}} />
       </Actions>
       <Info>
         <TicketDetails {...props} />

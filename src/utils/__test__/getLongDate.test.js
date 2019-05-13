@@ -1,6 +1,6 @@
 import { getLongDate } from '../utils';
 
-describe('getLongDate', () => {
+describe('getLongDate function', () => {
 
   test('Аргумент c типом не string. Вернет пустую строку', () => {
     expect(getLongDate()).toBe('');
@@ -28,7 +28,7 @@ describe('getLongDate', () => {
   });
 
   test('Аргумент - строка с датой \'27.03.19\'. Вернет \'27 мар 2019, Ср\'', () => {
-    expect(getLongDate('30.03.19')).toBe('27 мар 2019, Ср');
+    expect(getLongDate('27.03.19')).toBe('27 мар 2019, Ср');
   });
 
 });

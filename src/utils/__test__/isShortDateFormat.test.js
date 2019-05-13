@@ -1,6 +1,6 @@
 import { isShortDateFormat } from '../checkFormats';
 
-describe('isShortDateFormat', () => {
+describe('isShortDateFormat function', () => {
 
   test('Аргумент c типом не string. Вернет false', () => {
     expect(isShortDateFormat()).toBe(false);

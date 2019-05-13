@@ -20,11 +20,9 @@ const Container = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
-  /*overflow: hidden; Если содержимое выходит за пределы header */
 `;
 
 const Logo = styled.svg`
-  
   height: 82px;
   width: 82px;
 

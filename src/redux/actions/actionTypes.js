@@ -1,5 +1,6 @@
-export const CHANGE_TICKETS = 'CHANGE_TICKETS';
-export const CHANGE_COURSES = 'CHANGE_COURSES';
-export const CHANGE_CURRENCY = 'CHANGE_CURRENCY';
-export const CHANGE_STOPS = 'CHANGE_STOPS';
-export const CHANGE_ONLY_STOPS = 'CHANGE_ONLY_STOPS';
+export const SET_TICKETS = 'SET_TICKETS';
+export const SET_COURSES = 'SET_COURSES';
+
+export const SET_CURRENCY = 'SET_CURRENCY';
+export const SET_STOPS = 'SET_STOPS';
+export const SET_ONLY_STOP = 'SET_ONLY_STOP';

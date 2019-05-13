@@ -1,6 +1,6 @@
 import { getMonthName } from '../utils';
 
-describe('getMonthName', () => {
+describe('getMonthName function', () => {
 
   test('Аргумент c типом не number. Вернет \'Invalid month\'', () => {
     expect(getMonthName()).toBe('Invalid month');

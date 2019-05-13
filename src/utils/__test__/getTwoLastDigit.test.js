@@ -1,54 +1,36 @@
 import { getTwoLastDigit } from '../utils';
 
-describe('getTwoLastDigit', () => {
+describe('getTwoLastDigit function', () => {
 
-  test('Аргумент c типом не string. Вернет пустую строку', () => {
-    expect(getTwoLastDigit()).toBe('');
-    expect(getTwoLastDigit(null)).toBe('');
-    expect(getTwoLastDigit({})).toBe('');
-    expect(getTwoLastDigit([])).toBe('');
-    expect(getTwoLastDigit(new Date())).toBe('');
-    expect(getTwoLastDigit(12345)).toBe('');
+  test('Аргумент c типом не number. Вернет null', () => {
+    expect(getTwoLastDigit()).toBe(null);
+    expect(getTwoLastDigit(null)).toBe(null);
+    expect(getTwoLastDigit({})).toBe(null);
+    expect(getTwoLastDigit([])).toBe(null);
+    expect(getTwoLastDigit(new Date())).toBe(null);
+    expect(getTwoLastDigit('')).toBe(null);
+    expect(getTwoLastDigit('  ')).toBe(null);
+    expect(getTwoLastDigit('00')).toBe(null);
   });
 
-  test('', () => {
-    expect(getTwoLastDigit(0)).toBe('0');
+  test('Аргумент - число -5. Вернет число 5', () => {
+    expect(getTwoLastDigit(-5)).toBe(5);
   });
 
-  test('', () => {
-    expect(getTwoLastDigit(13)).toBe('13');
+  test('Аргумент - число 0. Вернет число 0', () => {
+    expect(getTwoLastDigit(0)).toBe(0);
   });
 
-  test('', () => {
-    expect(getTwoLastDigit(124)).toBe('24');
+  test('Аргумент - число 13. Вернет число 13', () => {
+    expect(getTwoLastDigit(13)).toBe(13);
   });
 
-  test('', () => {
-    expect(getTwoLastDigit(12345)).toBe('45');
+  test('Аргумент - число 124. Вернет число 24', () => {
+    expect(getTwoLastDigit(124)).toBe(24);
   });
 
-  test('', () => {
-    expect(getTwoLastDigit('')).toBe('');
-  });
-
-  test('', () => {
-    expect(getTwoLastDigit('  ')).toBe('');
-  });
-
-  test('', () => {
-    expect(getTwoLastDigit('00')).toBe('00');
-  });
-
-  test('', () => {
-    expect(getTwoLastDigit('пять')).toBe('');
-  });
-
-  test('', () => {
-    expect(getTwoLastDigit('пять5')).toBe('5');
-  });
-
-  test('', () => {
-    expect(getTwoLastDigit('5пять')).toBe('');
+  test('Аргумент - число 12345. Вернет число 45', () => {
+    expect(getTwoLastDigit(12345)).toBe(45);
   });
 
 });

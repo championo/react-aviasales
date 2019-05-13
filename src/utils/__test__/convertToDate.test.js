@@ -1,6 +1,6 @@
 import { convertToDate } from '../utils';
 
-describe('convertToDate', () => {
+describe('convertToDate function', () => {
 
   test('Аргумент c типом не string. Вернет \'Invalid Date\'', () => {
     // Можно проверить число месяца на NaN, если дата некорректна

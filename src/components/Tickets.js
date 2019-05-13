@@ -8,9 +8,14 @@ import { formatCurrency, calcPrice } from '../utils/utils';
 
 /**
  * Выводит список билетов
- * @param {*} props Свойство, содержащее информацию о билете и функцию-обработчик покупки билета
+ * @param {*} props Объект, содержащий информацию о билете и функцию-обработчик покупки билета
  */
 const Tickets = props => {
+  console.log('TICKETS COMPONENT ***************************************');
+  console.log(props.currencies);
+  console.log(props.currency);
+  console.log('*********************************************************');
+  
   // Функции преобразования цены по курсу и валюте
   const calc = calcPrice(props.currencies, props.currency);
   const formatter = formatCurrency(props.currency);
@@ -20,6 +25,8 @@ const Tickets = props => {
   if (props.items.length)
     ticketsTemplate = props.items.map(item => {
       let recalcPrice = calc(item.price);
+      console.log('ПЕРЕСЧЕТ ЦЕНЫ ' + recalcPrice);
+      console.log('ВАЛЮТА ' + props.currency);
       let formatPrice = formatter(recalcPrice);
       return <Ticket {...item} key={item.id} price={formatPrice} buyClick={() => this.props.buyClick} />;
     });
@@ -34,27 +41,23 @@ const Tickets = props => {
 };
 
 // Из хранилища считываем текущую валюту, выбранную пользователем, и курсы валют
-const mapStateToProps = state => {
-  return {
-    currency: state.selectedCurrency,
-    currencies: state.currencies
-  };
-};
+const mapStateToProps = state => ({
+  currency: state.filters.selectedCurrency,
+  currencies: state.tickets.courses.valuta
+});
 
 export default connect(mapStateToProps)(Tickets);
 
 Tickets.propTypes = {
-  props: PropTypes.shape({
-    origin: PropTypes.string.isRequired,
-    origin_name: PropTypes.string.isRequired,
-    destination: PropTypes.string.isRequired,
-    destination_name: PropTypes.string.isRequired,
-    departure_date: PropTypes.string.isRequired,
-    departure_time: PropTypes.string.isRequired,
-    arrival_date: PropTypes.string.isRequired,
-    arrival_time: PropTypes.string.isRequired,
-    stops: PropTypes.number.isRequired
-  })
+  origin: PropTypes.string.isRequired,
+  origin_name: PropTypes.string.isRequired,
+  destination: PropTypes.string.isRequired,
+  destination_name: PropTypes.string.isRequired,
+  departure_date: PropTypes.string.isRequired,
+  departure_time: PropTypes.string.isRequired,
+  arrival_date: PropTypes.string.isRequired,
+  arrival_time: PropTypes.string.isRequired,
+  stops: PropTypes.number.isRequired
 };
 
 const Container = styled.div`

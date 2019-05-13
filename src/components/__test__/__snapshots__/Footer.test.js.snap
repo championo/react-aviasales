@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer Footer - render correctly component 1`] = `
+<footer
+  className="sc-bdVaJa eNrnpL"
+>
+  Aviasales © 
+  2019
+</footer>
+`;

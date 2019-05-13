@@ -6,13 +6,14 @@ import cursor from '../../../assets/images/cursor/hand.png';
 class CheckBox extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       isChecked: false
     };
   }
   
   componentDidMount() {
-
+    console.log(this.props);
+    
     this.setState({isChecked: this.props.checked});
 
     // Компонент может иметь предустановленное значение. Оно устанавливается в коде jsx, как свойство checked (this.props.checked)
@@ -20,11 +21,11 @@ class CheckBox extends React.Component {
     // Когда компонент смонтирован - отправляем его данные в хранилище (изменяем фильтр). Для вызова изменения хранилища используется переданная извне функция click
     if (this.props.click !== undefined && typeof this.props.click === 'function') // Проверяем, что функция (callback) была передана
     {
-      if (this.props.checked) // Если значение было установлено, как true - устанавливаем фильтр в хранилище (т.о. осуществляется синхрон между UI и хранилищем)
+      if (this.props.checked) // Если значение было установлено как true - устанавливаем фильтр в хранилище (т.о. осуществляется синхрон между UI и хранилищем)
         this.props.click(this.props.value);
     }
   }
-    
+
   handleChange = (e) => {
    this.setState({isChecked: !this.props.filterStops.includes(this.props.value)});
         
@@ -50,7 +51,7 @@ class CheckBox extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    filterStops: state.filterStops
+    filterStops: state.filters.filterStops
   };
 };
 
@@ -89,9 +90,6 @@ border-radius: 3px;
 `;
 
 const Container = styled.label`
- 
- // min-width: calc(auto + 80px);
- //width: 300px;
 
   display: flex;
   align-items: center;
@@ -99,8 +97,6 @@ const Container = styled.label`
   position: relative;
 
   padding-left: 32px;
-
-
 
   color: #4a4a4a;
   font-size: 14px;
