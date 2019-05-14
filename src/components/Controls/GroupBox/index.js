@@ -25,15 +25,15 @@ GroupBox.propTypes = {
 const Container = styled.fieldset`
   border: none;
   
+  margin-top: 10px;
+
   &:not(:last-child) {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
-
-
 
   @media screen and (max-width: 1024px) {
     &:not(:last-child) {
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
   }
 `;

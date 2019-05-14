@@ -125,7 +125,6 @@ const Container = styled.div`
 
 const Content = styled.div`
   grid-area: content;
-  background-color: yellow;
 `;
 
 const Main = styled.main`
@@ -141,8 +140,6 @@ const Main = styled.main`
     
   margin: 0 auto;
 
-  background-color: blue;
-
   @media screen and (max-width: 1024px) {
 
     // Меняем расположение панели фильтрации и списка билетов с вертикального на горизонтальное
@@ -156,32 +153,3 @@ const Main = styled.main`
     }
   }
 `;
-
- // console.log("AAAAAAAAAAAAAAAAAAAAAAA");
-//console.log(courses);
-
-   /*   let valutes = Object.values(courses.Valute);
-      store.dispatch(setCourses({lastUpdate: new Date(), courses: valutes}));
-      this.props.InitCourses(courses);*/
-
-        
-/*
-   fetch('https://www.cbr-xml-daily.ru/daily_json.js')
-    .then(function(response) {
-      console.log("InitTickets 1")
-      if(response.ok)
-        return response.json();
-
-      throw new Error('Network response was not ok. Status ' + response.status);
-    })
-    .then(function(data) { 
-      console.log("InitTickets 2")
-      let courses = Object.values(data.Valute);
-      store.dispatch(changeCourses({lastUpdate: new Date(), courses}));
-      console.log("InitTickets 3")
-    })
-    .catch(function(error) {
-      console.log('Fetch operation error: ' + error.message);
-    });
-
-     */

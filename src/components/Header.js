@@ -16,7 +16,6 @@ export default Header;
 
 const Container = styled.header`
   grid-area: header;
-  background-color: orange;
   display: flex;
   justify-content: center;
   align-items: center;

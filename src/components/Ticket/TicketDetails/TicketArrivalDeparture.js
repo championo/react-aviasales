@@ -16,22 +16,20 @@ const TicketRoute = props => {
 export default TicketRoute;
 
 const Time = styled.p`
-  margin-bottom: 5px;
+ // margin-bottom: 5px;
   font-size: 32px;
-  background: red;
-
   margin: 0;
 `;
 
 const City = styled.p`
-  margin-bottom: 3px;
+ // margin-bottom: 3px;
 
   font-size: 16px;
   font-weight: bold;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  background: aqua;
+
 
   margin: 0;
 `;
@@ -39,7 +37,6 @@ const City = styled.p`
  const Date = styled.p`
   color: #8b9497;
   font-size: 14px;
-  background: pink;
 
   margin: 0;
 `;
@@ -71,8 +68,6 @@ const Column = styled.div`
       margin-bottom: 0;
     }
 
-
-    
      ${Date} {
       order: 1;
       margin-bottom: 5px;

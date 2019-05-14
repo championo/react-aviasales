@@ -4,14 +4,14 @@
 
 **Aviasales** is application for filtering airlines tickets.
 
-## Demo
+## Live demo
 Coming soon!
 
 ## Preview
 ![Aviasales demo](design/preview/demo.gif)
 
 ## Intro
-This is a test task for Junior Frontend Developer position. Go to the [link](https://github.com/KosyanMedia/test-tasks/blob/master/aviasales/README.md) to learn more about the task. 
+This is a test task for Junior Frontend Developer position. Go to the [link](https://github.com/KosyanMedia/test-tasks/blob/master/aviasales/README.md) to learn more about the task.
 
 ## Tasks
 - [x] Tickets rendering;

@@ -18,6 +18,4 @@ const Container = styled.footer`
 
   color: #4a4a4a;
   font-weight: 600;
-
-  background-color: orangered;
 `;

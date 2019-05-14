@@ -1,4 +1,3 @@
-//import { isInteger } from './checkTypes';
 import { isShortDateFormat } from './checkFormats';
 
 /**
@@ -213,19 +212,3 @@ export const getTwoLastDigit = number => {
    
   return null;
 }
-
-/*
-export const getCourses = () => {
-  fetch('https://www.cbr-xml-daily.ru/daily_json.js')
-  .then(function(response) {
-    if(response.ok)
-      return response.json();
-
-    throw new Error('Network response was not ok.');
-  }).then(function(data) { 
-    console.log(data);
-  }).catch(function(error) {
-    console.log('Fetch operation error: ' + error.message);
-  });
-}
-*/

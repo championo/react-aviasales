@@ -36,34 +36,34 @@ const SearchBar = (props) => {
   // Кнопки выбора пересадок
   const stops = [
     { 
-      text: "Все", 
-      value: -1, 
-      checked: false, 
-      hasStopsOnly: false 
-    },
-    { 
-      text: "Без пересадок", 
-      value: 0, 
+      text: "Все",
+      value: -1,
       checked: false,
-      hasStopsOnly: true 
+      hasStopsOnly: false
     },
     { 
-      text: "1 пересадка", 
+      text: "Без пересадок",
+      value: 0,
+      checked: false,
+      hasStopsOnly: true
+    },
+    { 
+      text: "1 пересадка",
       value: 1,
-      checked: false, 
-      hasStopsOnly: true 
+      checked: false,
+      hasStopsOnly: true
     },
     { 
-      text: "2 пересадки", 
+      text: "2 пересадки",
       value: 2,
       checked: true,
-      hasStopsOnly: true 
+      hasStopsOnly: true
     },
     { 
-      text: "3 пересадки", 
+      text: "3 пересадки",
       value: 3,
-      checked: true, 
-      hasStopsOnly: true 
+      checked: true,
+      hasStopsOnly: true
     }
   ];
 
@@ -89,13 +89,16 @@ export default connect(null, mapDispatchToProps)(SearchBar);
 
 const Container = styled.aside`
   grid-area: sidebar;
-  margin: 0 15px;
 
   width: 100%;
   min-width: 300px;
   max-width: 700px;
 
   margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
   
   ${Border};
 `;

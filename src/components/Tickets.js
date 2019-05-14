@@ -61,15 +61,14 @@ Tickets.propTypes = {
 };
 
 const Container = styled.div`
-grid-area: tickets;
-background-color: crimson;
+  grid-area: tickets;
 
-width: 100%;
+  width: 100%;
 
-// Разположение билетов по центру горизонтали
-display: flex;
-flex-direction: column;
-align-items: center;
+  // Разположение билетов по центру горизонтали
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const NotFindText = styled.span`

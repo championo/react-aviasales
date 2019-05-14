@@ -16,7 +16,7 @@ const Ticket = props => {
       </Actions>
       <Info>
         <TicketDetails {...props} />
-      </Info> 
+      </Info>
     </Container>
   );
 };
@@ -52,12 +52,12 @@ const Actions = styled.div`
   grid-template-columns: auto;
 
   padding: 15px;
-  background-color: #777;
-  //border-right: 1px solid #eceff1;
+  
+  border-right: 1px solid #eceff1;
 
   @media screen and (max-width: 700px) {
-    //border-right: none;
-    //border-bottom: 1px solid #eceff1;
+    border-right: none;
+    border-bottom: 1px solid #eceff1;
     grid-template-rows: auto;
     grid-template-columns: auto min-content;
   }
@@ -69,14 +69,11 @@ const Actions = styled.div`
 `;
 
 const Info = styled.div`
-  padding: 15px;
-  background-color: #333;
-
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: auto 1fr auto;
 
-  background: #777;
+  padding: 15px;
 
   @media screen and (max-width: 550px) {
     grid-template-rows: auto auto auto;

@@ -40,5 +40,4 @@ const Button = styled.button`
 const Text = styled.span`
   display: block;
   white-space: nowrap;
-  //padding: 3px 0;
 `;
